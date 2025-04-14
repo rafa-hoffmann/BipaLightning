@@ -1,4 +1,4 @@
-package com.desafio.bipa.ui.theme
+package com.desafio.bipa.core.design_system
 
 import androidx.compose.ui.graphics.Color
 

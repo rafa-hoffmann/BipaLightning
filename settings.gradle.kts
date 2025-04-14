@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Bipa Lightning"
 include(":app")
- 
+include(":core:designsystem")
