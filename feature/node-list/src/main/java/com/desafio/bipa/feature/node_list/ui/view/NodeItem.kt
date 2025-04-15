@@ -64,14 +64,13 @@ internal fun NodeItem(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(Icons.Default.Key, contentDescription = null)
+                Icon(Icons.Default.Key, contentDescription = "Public Key")
                 Spacer(modifier = Modifier.width(4.dp))
-                Text(text = "Public Key:")
                 Text(
                     modifier = Modifier
                         .padding(start = 6.dp),
                     text = publicKey,
-                    maxLines = 1,
+                    maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
             }
@@ -80,9 +79,8 @@ internal fun NodeItem(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(Icons.Default.Badge, contentDescription = null)
+                Icon(Icons.Default.Badge, contentDescription = "Alias")
                 Spacer(modifier = Modifier.width(4.dp))
-                Text(text = "Alias:")
                 Text(
                     modifier = Modifier
                         .basicMarquee()
@@ -96,33 +94,33 @@ internal fun NodeItem(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(Icons.Default.Hub, contentDescription = null)
+                Icon(Icons.Default.Hub, contentDescription = "Channels")
                 Spacer(modifier = Modifier.width(4.dp))
-                Text(text = "Channels: $channels")
+                Text(text = channels.toString())
             }
 
             Row(
                 modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(Icons.Default.Money, contentDescription = null)
+                Icon(Icons.Default.Money, contentDescription = "Capacity")
                 Spacer(modifier = Modifier.width(4.dp))
-                Text(text = "Capacity: $capacity")
+                Text(text = capacity)
             }
 
             Row(
                 modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(Icons.Default.AccessTime, contentDescription = null)
+                Icon(Icons.Default.AccessTime, contentDescription = "First seen")
                 Spacer(modifier = Modifier.width(4.dp))
-                Text(text = "First seen: $firstSeen")
+                Text(text = firstSeen)
             }
 
             Row(
                 modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(Icons.Default.Update, contentDescription = null)
+                Icon(Icons.Default.Update, contentDescription = "Updated At")
                 Spacer(modifier = Modifier.width(4.dp))
-                Text(text = "Updated at: $updatedAt")
+                Text(text = updatedAt)
             }
 
             Row(
@@ -131,10 +129,10 @@ internal fun NodeItem(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Row {
-                    Icon(Icons.Default.Public, contentDescription = null)
+                    Icon(Icons.Default.Public, contentDescription = "Location")
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
-                        text = "Location: ${city ?: "Unkown"}, ${country ?: "Unkown"}",
+                        text = "${city ?: "Unknown"}, ${country ?: "Unknown"}",
                         overflow = TextOverflow.Ellipsis,
                         maxLines = 1
                     )
