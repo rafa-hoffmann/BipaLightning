@@ -1,6 +1,6 @@
 package com.desafio.bipa.core.data.repository
 
-import com.desafio.bipa.core.data.model.Node
+import com.desafio.bipa.core.model.Node
 
 interface LightningRepository {
 
