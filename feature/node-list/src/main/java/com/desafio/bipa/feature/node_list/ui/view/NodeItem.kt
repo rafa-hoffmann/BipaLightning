@@ -30,6 +30,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,6 +39,7 @@ import com.desafio.bipa.core.design_system.BipaLightningTheme
 
 @Composable
 internal fun NodeItem(
+    modifier: Modifier = Modifier,
     publicKey: String,
     alias: String,
     channels: Long,
@@ -48,8 +50,7 @@ internal fun NodeItem(
     country: String?
 ) {
     Card(
-        modifier = Modifier
-            .fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(4.dp),
         border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.2f))
@@ -61,14 +62,14 @@ internal fun NodeItem(
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
+                modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(Icons.Default.Key, contentDescription = "Public Key")
                 Spacer(modifier = Modifier.width(4.dp))
                 Text(
                     modifier = Modifier
-                        .padding(start = 6.dp),
+                        .padding(start = 6.dp)
+                        .testTag("PublicKey"),
                     text = publicKey,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
@@ -76,27 +77,27 @@ internal fun NodeItem(
             }
 
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
+                modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(Icons.Default.Badge, contentDescription = "Alias")
                 Spacer(modifier = Modifier.width(4.dp))
                 Text(
                     modifier = Modifier
                         .basicMarquee()
-                        .padding(start = 6.dp), text = alias
+                        .padding(start = 6.dp)
+                        .testTag("Alias"),
+                    text = alias
                 )
             }
 
             HorizontalDivider()
 
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
+                modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(Icons.Default.Hub, contentDescription = "Channels")
                 Spacer(modifier = Modifier.width(4.dp))
-                Text(text = channels.toString())
+                Text(modifier = Modifier.testTag("Channels"), text = channels.toString())
             }
 
             Row(
@@ -104,7 +105,7 @@ internal fun NodeItem(
             ) {
                 Icon(Icons.Default.Money, contentDescription = "Capacity")
                 Spacer(modifier = Modifier.width(4.dp))
-                Text(text = capacity)
+                Text(modifier = Modifier.testTag("Capacity"), text = capacity)
             }
 
             Row(
@@ -112,7 +113,7 @@ internal fun NodeItem(
             ) {
                 Icon(Icons.Default.AccessTime, contentDescription = "First seen")
                 Spacer(modifier = Modifier.width(4.dp))
-                Text(text = firstSeen)
+                Text(modifier = Modifier.testTag("FirstSeen"), text = firstSeen)
             }
 
             Row(
@@ -120,7 +121,7 @@ internal fun NodeItem(
             ) {
                 Icon(Icons.Default.Update, contentDescription = "Updated At")
                 Spacer(modifier = Modifier.width(4.dp))
-                Text(text = updatedAt)
+                Text(modifier = Modifier.testTag("UpdatedAt"), text = updatedAt)
             }
 
             Row(
@@ -132,6 +133,7 @@ internal fun NodeItem(
                     Icon(Icons.Default.Public, contentDescription = "Location")
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
+                        modifier = Modifier.testTag("Location"),
                         text = "${city ?: "Unknown"}, ${country ?: "Unknown"}",
                         overflow = TextOverflow.Ellipsis,
                         maxLines = 1

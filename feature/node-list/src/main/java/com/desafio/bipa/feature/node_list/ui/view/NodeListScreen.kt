@@ -18,6 +18,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -51,7 +52,7 @@ fun NodeListRoute(viewModel: NodeListViewModel = koinViewModel()) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun NodeListScreen(
+fun NodeListScreen(
     items: List<NodeUi>,
     isRefreshing: Boolean,
     onEvent: (NodeListUiEvent) -> Unit,
@@ -73,9 +74,12 @@ private fun NodeListScreen(
                         text = "Nodes",
                         style = MaterialTheme.typography.headlineLarge
                     )
-                    LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    LazyColumn(
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
                         items(items) {
                             NodeItem(
+                                modifier = Modifier.testTag("NodeItem"),
                                 publicKey = it.publicKey,
                                 alias = it.alias,
                                 channels = it.channels,
