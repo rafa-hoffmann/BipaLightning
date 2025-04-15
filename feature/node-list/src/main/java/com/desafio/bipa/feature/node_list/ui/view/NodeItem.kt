@@ -40,7 +40,7 @@ import com.desafio.bipa.core.design_system.BipaLightningTheme
 internal fun NodeItem(
     publicKey: String,
     alias: String,
-    channels: Int,
+    channels: Long,
     capacity: String,
     firstSeen: String,
     updatedAt: String,
@@ -134,7 +134,7 @@ internal fun NodeItem(
                     Icon(Icons.Default.Public, contentDescription = null)
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
-                        text = "Location: $city, $country",
+                        text = "Location: ${city ?: "Unkown"}, ${country ?: "Unkown"}",
                         overflow = TextOverflow.Ellipsis,
                         maxLines = 1
                     )
