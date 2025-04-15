@@ -26,6 +26,8 @@ android {
 dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":core:domain"))
+    implementation(project(":core:model"))
+    implementation(project(":core:common"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -35,6 +37,9 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material.icons.extended)
+    implementation(libs.kotlinx.datetime)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
 
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.core)
