@@ -1,6 +1,5 @@
 package com.desafio.bipa.feature.node_list.ui.viewModel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.desafio.bipa.core.domain.use_case.GetNodeListUseCase
@@ -37,20 +36,16 @@ class NodeListViewModel(
                 it.copy(isRefreshing = true)
             }
 
-
             runCatching {
                 getNodeListUseCase()
             }.fold(onSuccess = { items ->
-                Log.i("#RefreshNodes", "success")
-
                 _uiState.update {
                     it.copy(
                         items = items.map { item -> item.toUi() },
                         isRefreshing = false
                     )
                 }
-            }, onFailure = { e ->
-                Log.e("#RefreshNodes", e.stackTraceToString())
+            }, onFailure = {
                 _uiState.update {
                     it.copy(isRefreshing = false, errorMessage = R.string.error_message)
                 }
