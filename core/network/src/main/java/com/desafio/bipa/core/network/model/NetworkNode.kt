@@ -8,14 +8,15 @@ data class NetworkNode(
     @SerialName("publicKey") val publicKey: String,
     @SerialName("alias") val alias: String,
     @SerialName("channels") val channels: Long,
+    @SerialName("capacity") val capacity: Long,
     @SerialName("firstSeen") val firstSeen: Long,
     @SerialName("updatedAt") val updatedAt: Long,
-    @SerialName("city") val city: LocalizedLocation?,
-    @SerialName("country") val country: LocalizedLocation?,
+    @SerialName("city") val city: NetworkLocalizedLocation?,
+    @SerialName("country") val country: NetworkLocalizedLocation?,
 )
 
 @Serializable
-data class LocalizedLocation(
-    @SerialName("pt-BR") val ptBR: String?,
-    @SerialName("en") val en: String?,
+data class NetworkLocalizedLocation(
+    @SerialName("pt-BR") val ptBR: String? = null,
+    @SerialName("en") val en: String? = null,
 )

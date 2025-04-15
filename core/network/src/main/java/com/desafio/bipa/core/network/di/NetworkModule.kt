@@ -9,6 +9,7 @@ val networkModule = module {
     single<Json> {
         Json {
             ignoreUnknownKeys = true
+            encodeDefaults = true
         }
     }
 
