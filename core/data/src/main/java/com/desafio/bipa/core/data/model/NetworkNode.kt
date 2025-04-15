@@ -12,6 +12,6 @@ fun NetworkNode.asNode() = Node(
     capacity = capacity,
     firstSeen = Instant.fromEpochSeconds(firstSeen),
     updatedAt = Instant.fromEpochSeconds(updatedAt),
-    city = LocalizedLocation(city?.ptBR, city?.en),
-    country = LocalizedLocation(country?.ptBR, country?.en)
+    city = city?.let { LocalizedLocation(it.ptBR, it.en) },
+    country = country?.let { LocalizedLocation(it.ptBR, it.en) }
 )

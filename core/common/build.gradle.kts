@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.desafio.picpay.core.common"
+    namespace = "com.desafio.bipa.core.common"
     compileSdk = 35
 
     defaultConfig {
@@ -25,4 +25,7 @@ android {
 
 dependencies {
     implementation(libs.kotlinx.coroutines.android)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlin.test)
 }

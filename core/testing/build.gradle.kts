@@ -1,15 +1,14 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "com.desafio.bipa.core.domain"
+    namespace = "com.desafio.bipa.core.testing"
     compileSdk = 35
 
     defaultConfig {
-        minSdk = 24
+        minSdk = 21
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -25,14 +24,11 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:data"))
-    implementation(project(":core:model"))
+    api(libs.kotlinx.coroutines.test)
 
-    implementation(platform(libs.koin.bom))
-    implementation(libs.koin.core)
+    api(project(":core:common"))
+    api(project(":core:data"))
+    api(project(":core:model"))
 
-    testImplementation(project(":core:testing"))
-    testImplementation(libs.junit)
-    testImplementation(libs.kotlin.test)
-    testImplementation(libs.kotlinx.coroutines.test)
+    implementation(libs.kotlinx.datetime)
 }
